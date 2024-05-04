@@ -10,7 +10,7 @@ import { useInteractiveCli } from "./uses/interactive-cli.mjs";
 const templates = ["bun"];
 const mirrors = ["https://registry.npmmirror.com/", "https://mirrors.cloud.tencent.com/npm/", "https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/", "https://cdn.jsdelivr.net/npm/"];
 
-const __filename = fileURLToPath(import.meta.url);
+let __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 async function createMilkio() {
@@ -20,6 +20,14 @@ async function createMilkio() {
     const langSelected = await interactiveCli.select("🥛 Hello! What language do you want to read?", [...langs]);
     const i18n = (...translates) => translates[langs.findIndex((v) => (v) === langSelected)]
 
+    if (join(cwd()) === join(__dirname)) {
+        const projectSelected = await interactiveCli.input(
+            // 🥛 What name for your project?
+            i18n("🥛 Where would you like to install it? Please enter the full path", "🥛 你想安装到哪里？输入完整路径", "🥛 どこにインストールしますか？完全なパスを入力してください", "🥛 어디에 설치하시겠습니까? 전체 경로를 입력해주세요"),
+            join(cwd(), ".."),
+        );
+        __filename = projectSelected;
+    }
     const templateSelected = await interactiveCli.select(
         // 🥛 Which runtime do you prefer?
         i18n("🥛 Which runtime do you prefer?", "🥛 你更喜欢哪个运行时？", "🥛 どちらの Runtime が好きですか？", "🥛 어느 Runtime 를 더 좋아하세요？"),
@@ -76,6 +84,10 @@ node_modules
     // edit package.json
     const packageJson = await readFile(join(cwd(), nameSelected, "package.json"), "utf8");
     await writeFile(join(cwd(), nameSelected, "package.json"), packageJson.replace(/"name": ".*"/, `"name": "${nameSelected}"`));
+
+    // edit client package.json
+    const clientPackageJson = await readFile(join(cwd(), nameSelected, "packages", "client", "package.json"), "utf8");
+    await writeFile(join(cwd(), nameSelected, "packages", "client", "package.json"), clientPackageJson.replace(/"name": ".*"/, `"name": "${nameSelected}-client"`));
 
     // edit bunfig.toml
     if (!mirrorSelected.startsWith("🤗")) {
