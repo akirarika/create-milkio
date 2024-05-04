@@ -95,7 +95,7 @@ node_modules
     console.log(i18n(`2. Install "Milkio" in the VS Code extension.`, `2. 在 VS Code 扩展中安装 "Milkio"。`, `2. VS Code の拡張機能に "Milkio" をインストールします。`, `2. VS Code 확장 프로그램에 'Milkio'를 설치합니다.`));
     // 3. Let's start turning your dreams into reality!
     console.log(i18n(`3. Let's start turning your dreams into reality! 🦄`, "3. 让我们开始将梦想转化为现实！🦄", "3. あなたの夢を実現しましょう！🦄", "3. 브란만 노트북을 만들고 한다! 🦄"));
-    console.log("\n- Docs: https://milkio.fun\n");
+    console.log(`\n- ${i18n("Docs: https://milkio.fun", "文档: https://zh-milkio.nito.ink", "ドキュメント: https://milkio.fun", "문서: https://milkio.fun")}\n`);
 }
 
 await createMilkio();
