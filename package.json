@@ -1,0 +1,23 @@
+{
+	"name": "create-milkio",
+	"module": "index.mjs",
+	"type": "module",
+	"version": "0.1.3",
+	"devDependencies": {
+		"@biomejs/biome": "1.7.2",
+		"@types/bun": "latest"
+	},
+	"bin": {
+		"create-milkio": "index.mjs"
+	},
+	"scripts": {
+		"create-milkio": "node ./index.mjs"
+	},
+	"peerDependencies": {
+		"typescript": "^5.0.0"
+	},
+	"dependencies": {
+		"enquirer": "^2.4.1"
+	},
+	"trustedDependencies": ["create-milkio"]
+}

@@ -1,0 +1,8 @@
+[generate]
+significant = []
+insignificant = []
+
+[menubar]
+commands = [
+  { name = 'Test All APIs', script = 'bun run api-test' },
+]

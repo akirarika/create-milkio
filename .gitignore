@@ -1,0 +1,7 @@
+node_modules
+/templates/*/app
+/templates/*/dist
+/templates/*/generated
+/templates/*/packages/client/dist
+/templates/*/packages/client/project
+/milkio-project

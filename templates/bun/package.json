@@ -1,0 +1,25 @@
+{
+  "name": "milkio-template",
+  "type": "module",
+  "private": true,
+  "module": "index.ts",
+  "scripts": {
+    "start": "bun run ./run-serve.ts",
+    "dev": "bun run --inspect ./run-serve.ts",
+    "api-test": "bun run ./run-api-test.ts",
+    "command": "bun run ./run-command.ts",
+    "build": "bun build ./run-serve.ts --compile --minify --sourcemap --outfile ./dist/app --target bun",
+    "milkio": "./node_modules/milkio/c.ts"
+  },
+  "trustedDependencies": [],
+  "dependencies": {
+    "milkio": "0.2.2",
+    "milkio-template": "^0.0.2",
+    "typia": "^6.0.3"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.7.1",
+    "@types/bun": "latest",
+    "typescript": "^5.4.5"
+  }
+}
