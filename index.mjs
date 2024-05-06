@@ -6,6 +6,7 @@ import { cp, readFile, writeFile } from "node:fs/promises";
 import { exit, cwd } from "node:process";
 import { fileURLToPath } from "node:url";
 import { useInteractiveCli } from "./uses/interactive-cli.mjs";
+import { execFileSync } from "node:child_process";
 
 const templates = ["bun"];
 const mirrors = ["https://registry.npmmirror.com/", "https://mirrors.cloud.tencent.com/npm/", "https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/", "https://cdn.jsdelivr.net/npm/"];
@@ -94,6 +95,10 @@ node_modules
         const bunfigToml = await readFile(join(cwd(), nameSelected, "bunfig.toml"), "utf8");
         await writeFile(join(cwd(), nameSelected, "bunfig.toml"), bunfigToml.replace(/registry = ".*"/, `registry = "${mirrorSelected}"`));
     }
+
+    console.log("\n")
+    execFileSync("bun", ["i"], { stdio: "inherit", cwd: join(cwd(), nameSelected) });
+    execFileSync("bun", ["run", "milkio", "gen"], { stdio: "inherit", cwd: join(cwd(), nameSelected) });
 
     process.stdout.clearLine();
     process.stdout.cursorTo(0);
