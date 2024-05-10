@@ -60,7 +60,7 @@ async function createMilkio() {
 
     await cp(
         join(__dirname, "templates", templateSelected),
-        join(projectTargetPath),
+        projectTargetPath,
         { recursive: true },
     );
 
@@ -104,8 +104,8 @@ node_modules
     await unlink(join(projectTargetPath, "bun.lockb"));
 
     console.log("\n")
-    execFileSync("bun", ["i"], { stdio: "inherit", cwd: join(projectTargetPath) });
-    execFileSync("bun", ["run", "milkio", "gen"], { stdio: "inherit", cwd: join(projectTargetPath) });
+    execFileSync("bun", ["i"], { stdio: "inherit", cwd: projectTargetPath });
+    execFileSync("bun", ["run", "milkio", "gen"], { stdio: "inherit", cwd: projectTargetPath });
 
     process.stdout.clearLine();
     process.stdout.cursorTo(0);
