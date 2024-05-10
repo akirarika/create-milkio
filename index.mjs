@@ -10,6 +10,8 @@ import { execFileSync } from "node:child_process";
 
 const templates = ["bun"];
 const mirrors = ["https://registry.npmmirror.com/", "https://mirrors.cloud.tencent.com/npm/", "https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/", "https://cdn.jsdelivr.net/npm/"];
+// some package need latest version , remove from templates/*/bun/package.json and add in this array.
+const getLatestPackage = ["milkio", "milkio-template"]
 
 let __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -105,6 +107,7 @@ node_modules
 
     console.log("\n")
     execFileSync("bun", ["i"], { stdio: "inherit", cwd: projectTargetPath });
+    execFileSync("bun", ["i", ...getLatestPackage], { stdio: "inherit", cwd: projectTargetPath });
     execFileSync("bun", ["run", "milkio", "gen"], { stdio: "inherit", cwd: projectTargetPath });
 
     process.stdout.clearLine();
