@@ -8,12 +8,12 @@
 		"dev": "bun run --inspect ./run-serve.ts",
 		"api-test": "bun run ./run-api-test.ts",
 		"command": "bun run ./run-command.ts",
-		"build": "bun build ./run-serve.ts --compile --minify --sourcemap --outfile ./dist/app --target bun",
+		"build": "bun build ./run-serve.ts --outfile ./dist/app --target=bun --compile --minify --sourcemap",
 		"milkio": "./node_modules/milkio/c.ts"
 	},
 	"trustedDependencies": [],
 	"dependencies": {
-		"milkio": "0.2.6",
+		"milkio": "0.2.10",
 		"milkio-template": "^0.0.2",
 		"typia": "^6.0.3"
 	},

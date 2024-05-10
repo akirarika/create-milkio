@@ -87,14 +87,19 @@ node_modules
     await writeFile(join(cwd(), nameSelected, "package.json"), packageJson.replace(/"name": ".*"/, `"name": "${nameSelected}"`));
 
     // edit client package.json
-    const clientPackageJson = await readFile(join(cwd(), nameSelected, "packages", "client", "package.json"), "utf8");
-    await writeFile(join(cwd(), nameSelected, "packages", "client", "package.json"), clientPackageJson.replace(/"name": ".*"/, `"name": "${nameSelected}-client"`));
+    let clientPackageJson = await readFile(join(cwd(), nameSelected, "packages", "client", "package.json"), "utf8");
+    clientPackageJson = clientPackageJson.replace(/"name": ".*"/, `"name": "${nameSelected}-client"`);
+    // clientPackageJson = clientPackageJson.replace(/"milkio": ".*"/, `"milkio": "^x.x.x"`);
+    await writeFile(join(cwd(), nameSelected, "packages", "client", "package.json"), clientPackageJson);
 
     // edit bunfig.toml
     if (!mirrorSelected.startsWith("🤗")) {
         const bunfigToml = await readFile(join(cwd(), nameSelected, "bunfig.toml"), "utf8");
         await writeFile(join(cwd(), nameSelected, "bunfig.toml"), bunfigToml.replace(/registry = ".*"/, `registry = "${mirrorSelected}"`));
     }
+
+    // remove bun.lockb
+    await unlink(join(cwd(), nameSelected, "bun.lockb"));
 
     console.log("\n")
     execFileSync("bun", ["i"], { stdio: "inherit", cwd: join(cwd(), nameSelected) });
