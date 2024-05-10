@@ -22,14 +22,14 @@ async function createMilkio() {
     const langs = ["English", "中文", "日本語", "한국어"];
     const langSelected = await interactiveCli.select("🥛 Hello! What language do you want to read?", [...langs]);
     const i18n = (...translates) => translates[langs.findIndex((v) => (v) === langSelected)]
-
+    let fullTargetPath = cwd()
     if (join(cwd()) === join(__dirname)) {
         const projectSelected = await interactiveCli.input(
             // 🥛 What name for your project?
             i18n("🥛 Where would you like to install it? Please enter the full path", "🥛 你想安装到哪里？输入完整路径", "🥛 どこにインストールしますか？完全なパスを入力してください", "🥛 어디에 설치하시겠습니까? 전체 경로를 입력해주세요"),
             join(cwd(), ".."),
         );
-        __filename = projectSelected;
+        fullTargetPath = projectSelected;
     }
     const templateSelected = await interactiveCli.select(
         // 🥛 Which runtime do you prefer?
@@ -41,7 +41,7 @@ async function createMilkio() {
         i18n("🥛 What name for your project?", "🥛 你的工程叫什么名字？", "🥛 あなたのプロジェクトの名前は何ですか？", "당신의 프로젝트 이름은 무엇인가요？"),
         "milkio-project",
     );
-    const projectTargetPath = join(cwd(), nameSelected)
+    const projectTargetPath = join(fullTargetPath, nameSelected)
     if (await existsSync(projectTargetPath)) {
         console.log(i18n(`❎ ${nameSelected} already exists.`, `❎ ${nameSelected} 已经存在`, `❎ ${nameSelected} は既に存在しています`, `❎ ${nameSelected} 이미 존재합니다`));
         exit(0);
