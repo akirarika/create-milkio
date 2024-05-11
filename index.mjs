@@ -10,6 +10,8 @@ import { execFileSync } from "node:child_process";
 
 const templates = ["bun"];
 const mirrors = ["https://registry.npmmirror.com/", "https://mirrors.cloud.tencent.com/npm/", "https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/", "https://cdn.jsdelivr.net/npm/"];
+// some package need latest version , remove from templates/*/bun/package.json and add in this array.
+const getLatestPackage = ["milkio", "milkio-template"]
 
 let __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -20,14 +22,14 @@ async function createMilkio() {
     const langs = ["English", "中文", "日本語", "한국어"];
     const langSelected = await interactiveCli.select("🥛 Hello! What language do you want to read?", [...langs]);
     const i18n = (...translates) => translates[langs.findIndex((v) => (v) === langSelected)]
-
+    let fullTargetPath = cwd()
     if (join(cwd()) === join(__dirname)) {
         const projectSelected = await interactiveCli.input(
             // 🥛 What name for your project?
             i18n("🥛 Where would you like to install it? Please enter the full path", "🥛 你想安装到哪里？输入完整路径", "🥛 どこにインストールしますか？完全なパスを入力してください", "🥛 어디에 설치하시겠습니까? 전체 경로를 입력해주세요"),
             join(cwd(), ".."),
         );
-        __filename = projectSelected;
+        fullTargetPath = projectSelected;
     }
     const templateSelected = await interactiveCli.select(
         // 🥛 Which runtime do you prefer?
@@ -39,7 +41,8 @@ async function createMilkio() {
         i18n("🥛 What name for your project?", "🥛 你的工程叫什么名字？", "🥛 あなたのプロジェクトの名前は何ですか？", "당신의 프로젝트 이름은 무엇인가요？"),
         "milkio-project",
     );
-    if (await existsSync(join(cwd(), nameSelected))) {
+    const projectTargetPath = join(fullTargetPath, nameSelected)
+    if (await existsSync(projectTargetPath)) {
         console.log(i18n(`❎ ${nameSelected} already exists.`, `❎ ${nameSelected} 已经存在`, `❎ ${nameSelected} は既に存在しています`, `❎ ${nameSelected} 이미 존재합니다`));
         exit(0);
     }
@@ -59,12 +62,12 @@ async function createMilkio() {
 
     await cp(
         join(__dirname, "templates", templateSelected),
-        join(cwd(), nameSelected),
+        projectTargetPath,
         { recursive: true },
     );
 
     // create .gitignore
-    await writeFile(join(cwd(), nameSelected, ".gitignore"), `# ignore
+    await writeFile(join(projectTargetPath, ".gitignore"), `# ignore
 node_modules
 /app
 /dist
@@ -74,7 +77,7 @@ node_modules
 `);
 
     // create .npmignore
-    await writeFile(join(cwd(), nameSelected, "packages", "client", ".npmignore"), `# ignore
+    await writeFile(join(projectTargetPath, "packages", "client", ".npmignore"), `# ignore
 node_modules
 /project/
 !/project/src/apps
@@ -83,27 +86,29 @@ node_modules
 `);
 
     // edit package.json
-    const packageJson = await readFile(join(cwd(), nameSelected, "package.json"), "utf8");
-    await writeFile(join(cwd(), nameSelected, "package.json"), packageJson.replace(/"name": ".*"/, `"name": "${nameSelected}"`));
+    const packageJson = await readFile(join(projectTargetPath, "package.json"), "utf8");
+    await writeFile(join(projectTargetPath, "package.json"), packageJson.replace(/"name": ".*"/, `"name": "${nameSelected}"`));
 
     // edit client package.json
-    let clientPackageJson = await readFile(join(cwd(), nameSelected, "packages", "client", "package.json"), "utf8");
+    let clientPackageJson = await readFile(join(projectTargetPath, "packages", "client", "package.json"), "utf8");
     clientPackageJson = clientPackageJson.replace(/"name": ".*"/, `"name": "${nameSelected}-client"`);
+
     // clientPackageJson = clientPackageJson.replace(/"milkio": ".*"/, `"milkio": "^x.x.x"`);
-    await writeFile(join(cwd(), nameSelected, "packages", "client", "package.json"), clientPackageJson);
+    await writeFile(join(projectTargetPath, "packages", "client", "package.json"), clientPackageJson);
 
     // edit bunfig.toml
     if (!mirrorSelected.startsWith("🤗")) {
-        const bunfigToml = await readFile(join(cwd(), nameSelected, "bunfig.toml"), "utf8");
-        await writeFile(join(cwd(), nameSelected, "bunfig.toml"), bunfigToml.replace(/registry = ".*"/, `registry = "${mirrorSelected}"`));
+        const bunfigToml = await readFile(join(projectTargetPath, "bunfig.toml"), "utf8");
+        await writeFile(join(projectTargetPath, "bunfig.toml"), bunfigToml.replace(/registry = ".*"/, `registry = "${mirrorSelected}"`));
     }
 
     // remove bun.lockb
-    await unlink(join(cwd(), nameSelected, "bun.lockb"));
+    await unlink(join(projectTargetPath, "bun.lockb"));
 
     console.log("\n")
-    execFileSync("bun", ["i"], { stdio: "inherit", cwd: join(cwd(), nameSelected) });
-    execFileSync("bun", ["run", "milkio", "gen"], { stdio: "inherit", cwd: join(cwd(), nameSelected) });
+    execFileSync("bun", ["i"], { stdio: "inherit", cwd: projectTargetPath });
+    execFileSync("bun", ["i", ...getLatestPackage], { stdio: "inherit", cwd: projectTargetPath });
+    execFileSync("bun", ["run", "milkio", "gen"], { stdio: "inherit", cwd: projectTargetPath });
 
     process.stdout.clearLine();
     process.stdout.cursorTo(0);
