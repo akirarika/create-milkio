@@ -13,7 +13,7 @@
 	},
 	"trustedDependencies": [],
 	"dependencies": {
-		"milkio": "0.2.10",
+		"milkio": "^0.2.11",
 		"milkio-template": "^0.0.2",
 		"typia": "^6.0.3"
 	},

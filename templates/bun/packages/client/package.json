@@ -10,6 +10,6 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "milkio-client": "0.0.5"
+    "milkio-client": "0.0.6"
   }
 }

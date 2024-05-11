@@ -2,7 +2,7 @@
 
 import { join, dirname } from "node:path";
 import { existsSync } from "node:fs";
-import { cp, readFile, writeFile } from "node:fs/promises";
+import { cp, readFile, writeFile, unlink } from "node:fs/promises";
 import { exit, cwd } from "node:process";
 import { fileURLToPath } from "node:url";
 import { useInteractiveCli } from "./uses/interactive-cli.mjs";
