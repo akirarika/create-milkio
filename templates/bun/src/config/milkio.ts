@@ -3,6 +3,7 @@ import { env } from "bun";
 
 export const configMilkio = {
 	debug: envToBoolean(env.MILKIO_DEBUG, true),
+	nodeEnv: envToString(env.NODE_ENV, "production") as "development" | "production",
 
 	// http server
 	ignorePathLevel: envToNumber(env.MILKIO_IGNORE_PATH_LEVEL, 0),
