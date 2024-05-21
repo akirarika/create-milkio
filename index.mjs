@@ -188,6 +188,7 @@ node_modules
 	process.stdout.clearLine();
 	process.stdout.cursorTo(0);
 	// ✔ 🥛 Project created successfully!
+	console.log("\n\n");
 	console.log(
 		i18n(
 			"✔ 🥛 Project created successfully!\n",
