@@ -31,7 +31,7 @@ export const test = defineApiTest(api, [
 				by: "milkio",
 			});
 
-			if (!result.success) return test.reject(`The result was not success`);
+			if (!result.success) return test.reject("The result was not success");
 		},
 	},
 ]);

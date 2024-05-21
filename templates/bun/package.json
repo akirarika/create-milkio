@@ -8,7 +8,7 @@
 		"dev": "bun run --inspect ./run-serve.ts",
 		"api-test": "bun run ./run-api-test.ts",
 		"command": "bun run ./run-command.ts",
-		"build": "bun build ./run-serve.ts --outfile ./dist/app --target=bun --compile --minify --sourcemap",
+		"build": "bun build ./run-serve.ts --sourcemap=external --outdir=./dist --target=bun --splitting --minify",
 		"milkio": "./node_modules/milkio/c.ts"
 	},
 	"trustedDependencies": [],
