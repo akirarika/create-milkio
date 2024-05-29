@@ -1,5 +1,5 @@
 import { createTemplate } from "milkio-template"
-import { join } from "path"
+import { join } from "node:path"
 
 await createTemplate(async (tools) => {
   return {
