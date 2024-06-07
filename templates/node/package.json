@@ -1,0 +1,26 @@
+{
+	"name": "node",
+	"private": true,
+	"version": "0.0.0",
+	"type": "module",
+	"scripts": {
+		"start": "./vite-node.mjs ./run-serve.ts",
+		"dev": "./vite-node.mjs ./run-serve.ts",
+		"api-test": "./vite-node.mjs ./run-api-test.ts",
+		"command": "./vite-node.mjs ./run-command.ts",
+		"build": "bun build ./run-serve.ts --splitting --sourcemap=inline --outdir=./dist --target=node --format=esm --minify",
+		"milkio": "./node_modules/milkio/c.ts"
+	},
+	"dependencies": {
+		"@hattip/adapter-node": "^0.0.45",
+		"milkio": "^0.5.1",
+		"milkio-template": "^0.0.2",
+		"typia": "^6.0.3"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.8.0",
+		"@types/node": "latest",
+		"typescript": "^5.4.5",
+		"vite-node": "^1.6.0"
+	}
+}

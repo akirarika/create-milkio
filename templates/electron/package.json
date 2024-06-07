@@ -1,0 +1,47 @@
+{
+	"name": "milkio-project",
+	"productName": "milkio-project",
+	"version": "1.0.0",
+	"type": "module",
+	"description": "My Electron application description",
+	"main": "index.mjs",
+	"scripts": {
+		"dev": "npm run electron-forge start",
+		"start": "npm run electron-forge start",
+		"build": "npm run milkio gen && astro build && electron-forge package",
+		"api-test": "./vite-node.mjs ./run-api-test.ts",
+		"command": "./vite-node.mjs ./run-command.ts",
+		"milkio": "./node_modules/milkio/c.ts",
+		"electron-forge": "electron-forge",
+		"astro": "astro"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.8.0",
+		"@electron-forge/cli": "^7.4.0",
+		"@electron-forge/maker-deb": "^7.4.0",
+		"@electron-forge/maker-rpm": "^7.4.0",
+		"@electron-forge/maker-squirrel": "^7.4.0",
+		"@electron-forge/maker-zip": "^7.4.0",
+		"@electron-forge/plugin-auto-unpack-natives": "^7.4.0",
+		"@electron-forge/plugin-fuses": "^7.4.0",
+		"@electron/fuses": "^1.8.0",
+		"@types/node": "latest",
+		"electron": "30.0.9",
+		"typescript": "^5.4.5",
+		"vite-node": "^1.6.0"
+	},
+	"dependencies": {
+		"@hattip/adapter-node": "^0.0.45",
+		"astro": "^4.9.3",
+		"bun": "^1.1.12",
+		"client": "file:packages/client",
+		"detect-port": "^1.6.1",
+		"electron-squirrel-startup": "^1.0.1",
+		"i": "^0.3.7",
+		"milkio": "0.5.2",
+		"milkio-static-for-node": "0.0.3",
+		"milkio-template": "^0.0.2",
+		"typia": "^6.0.3",
+		"unplugin-auto-import": "^0.17.6"
+	}
+}

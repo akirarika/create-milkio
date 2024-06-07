@@ -1,5 +1,5 @@
 {
-	"name": "milkio-template",
+	"name": "milkio-project",
 	"type": "module",
 	"private": true,
 	"module": "index.ts",
@@ -13,12 +13,12 @@
 	},
 	"trustedDependencies": [],
 	"dependencies": {
-		"milkio": "^0.2.12",
+		"milkio": "^0.5.1",
 		"milkio-template": "^0.0.2",
 		"typia": "^6.0.3"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "1.7.1",
+		"@biomejs/biome": "1.8.0",
 		"@types/bun": "latest",
 		"typescript": "^5.4.5"
 	}
