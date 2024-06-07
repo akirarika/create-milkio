@@ -1,6 +1,7 @@
 import { envToBoolean, envToNumber, envToString } from "milkio";
 import detectPort from "detect-port";
 import { env } from "node:process";
+import { join } from "node:path";
 
 export const configMilkio = {
 	debug: envToBoolean(env.MILKIO_DEBUG, true),
@@ -13,8 +14,11 @@ export const configMilkio = {
 	corsAllowOrigin: envToString(env.MILKIO_CORS_ALLOW_ORIGIN, "*"),
 
 	// electron
-	port: await detectPort(Math.floor(Math.random() * (20000 - 10000 + 1)) + 10000), // obtain an available port number between 10000 and 20000
+	port: detectPort(Math.floor(Math.random() * (20000 - 10000 + 1)) + 10000), // obtain an available port number between 10000 and 20000
 	devWebviewUrl: "localhost:8999",
 	openDevTool: true,
 	allowDomains: [],
+
+	// paths
+	assets: () => (electron.app.isPackaged ? join(process.resourcesPath, "assets") : join(electron.app.getAppPath(), "assets")),
 };

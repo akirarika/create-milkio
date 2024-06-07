@@ -4,7 +4,8 @@ const { FuseV1Options, FuseVersion } = require('@electron/fuses');
 module.exports = {
   packagerConfig: {
     asar: true,
-    ignore: [".templates", ".vscode", "generated", "node_modules", "out", "packages", "src", ".co.toml", ".env", ".gitignore", "astro.config.mjs", "biome.json", "bun.lockb", "bunfig.toml", "forge.config.cjs", "milkio.toml", "README.md", "vite-node.mjs", "run-api-test.ts", "run-command.ts", "milkio.ts", "tsconfig.json"]
+    extraResource: "assets",
+    ignore: [".templates", ".vscode", "generated", "assets", "node_modules", "out", "packages", "src", ".co.toml", ".env", ".gitignore", "astro.config.mjs", "biome.json", "bun.lockb", "bunfig.toml", "forge.config.cjs", "milkio.toml", "README.md", "vite-node.mjs", "run-api-test.ts", "run-command.ts", "milkio.ts", "auto-imports.d.ts", "tsconfig.json"]
   },
   rebuildConfig: {},
   makers: [

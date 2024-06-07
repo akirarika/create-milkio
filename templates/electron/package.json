@@ -6,7 +6,7 @@
 	"description": "My Electron application description",
 	"main": "index.mjs",
 	"scripts": {
-		"dev": "npm run electron-forge start",
+		"dev": "npm run electron-forge start --inspect=8229",
 		"start": "npm run electron-forge start",
 		"build": "npm run milkio gen && astro build && electron-forge package",
 		"api-test": "./vite-node.mjs ./run-api-test.ts",

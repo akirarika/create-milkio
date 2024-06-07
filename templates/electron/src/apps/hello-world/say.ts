@@ -1,5 +1,8 @@
 import { defineApi, defineApiTest } from "milkio";
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 import type typia from "typia";
+import { configMilkio } from "../../config/milkio";
 
 /**
  * This is an API that greets you!
@@ -9,7 +12,7 @@ export const api = defineApi({
 	meta: {
 		//
 	},
-	action(
+	async action(
 		params: {
 			by: string & typia.tags.MinLength<2> & typia.tags.MaxLength<16>;
 		},
@@ -18,7 +21,7 @@ export const api = defineApi({
 		const message = `hello world! (by ${params.by})`;
 
 		return {
-			youSay: message,
+			youSay: message.toString(),
 		};
 	},
 });
