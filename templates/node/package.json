@@ -4,12 +4,12 @@
 	"version": "0.0.0",
 	"type": "module",
 	"scripts": {
-		"start": "./vite-node.mjs ./run-serve.ts",
-		"dev": "./vite-node.mjs ./run-serve.ts",
-		"api-test": "./vite-node.mjs ./run-api-test.ts",
-		"command": "./vite-node.mjs ./run-command.ts",
+		"start": "node vite-node.mjs run-serve.ts",
+		"dev": "node vite-node.mjs run-serve.ts",
+		"api-test": "node vite-node.mjs run-api-test.ts",
+		"command": "node vite-node.mjs run-command.ts",
 		"build": "bun build ./run-serve.ts --splitting --sourcemap=inline --outdir=./dist --target=node --format=esm --minify",
-		"milkio": "./node_modules/milkio/c.ts"
+		"milkio": "node node_modules/milkio/c.ts"
 	},
 	"dependencies": {
 		"@hattip/adapter-node": "^0.0.45",

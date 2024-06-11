@@ -48,8 +48,12 @@ export const api = defineApi({
 				if (configMilkio.openDevTool) windowWebview.webContents.openDevTools();
 
 				// when encountering unknown links, it is recommended to open them in a browser to prevent potential security risks.
-				const allowDomains = [`localhost:${port}`, ...configMilkio.allowDomains];
-				if (!electron.app.isPackaged) allowDomains.push(`${configMilkio.devWebviewUrl}`);
+				const allowDomains = [
+					`localhost:${port}`,
+					...configMilkio.allowDomains,
+				];
+				if (!electron.app.isPackaged)
+					allowDomains.push(`${configMilkio.devWebviewUrl}`);
 				windowWebview.webContents.on("will-navigate", (e) => {
 					e.preventDefault();
 					const url = new URL(e.url);
@@ -66,7 +70,11 @@ export const api = defineApi({
 				// when you are developing locally, Electron will load `http://localhost:8999` as the page (you can modify this in `/src/config/milkio.ts`).
 				// if you package your Electron application, it will access the static server of milkio, loading the web pages from the public directory.
 				await loadAstroDev();
-				const url = new URL(electron.app.isPackaged ? `http://localhost:${port}` : `http://${configMilkio.devWebviewUrl}`);
+				const url = new URL(
+					electron.app.isPackaged
+						? `http://localhost:${port}`
+						: `http://${configMilkio.devWebviewUrl}`,
+				);
 				url.searchParams.set("_milkioServer", `http://localhost:${port}`);
 				windowWebview.loadURL(url.toString());
 			};
@@ -103,7 +111,7 @@ export const api = defineApi({
 // start the Astro development server in an unpacked state.
 const loadAstroDev = async () => {
 	if (electron.app.isPackaged) return;
-	const astroProcess = spawn("npm", ["run", "astro", "dev"]);
+	const astroProcess = spawn("npm", ["run", "astro", "dev"], { shell: true });
 	astroProcess.stdout.on("data", (data) => console.log(data.toString()));
 	astroProcess.stderr.on("data", (data) => console.log(data.toString()));
 	// continue after a certain delay, or else the webview loading will occur before the astro dev starts.
