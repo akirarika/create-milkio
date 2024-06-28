@@ -1,10 +1,10 @@
-import { createTemplate } from "milkio-template"
-import { join } from "path"
+import { createTemplate } from "milkio-template";
+import { join } from "node:path";
 
 await createTemplate(async (tools) => {
-  return {
-    path: join(tools.directory(), `${tools.hyphen(tools.name())}.ts`),
-    content: `
+	return {
+		path: join(tools.directory(), `${tools.hyphen(tools.name())}.ts`),
+		content: `
 import { defineApi, defineApiTest } from "milkio"
 
 /**
@@ -25,11 +25,12 @@ export const test = defineApiTest(api, [
   {
     name: "Basic",
     handler: async (test) => {
-      const result = await test.execute(await test.randParams())
+      const result = await test.execute({ params: await test.randParams() })
+      test.logger.log("result", result)
       if (!result.success) return test.reject(\`The result was not success\`)
     }
   }
 ])
-`.trim()
-  }
-})
+`.trim(),
+	};
+});
