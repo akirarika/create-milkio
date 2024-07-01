@@ -8,7 +8,7 @@ import { fileURLToPath } from "node:url";
 import { useInteractiveCli } from "./uses/interactive-cli.mjs";
 import { execFileSync } from "node:child_process";
 
-const templates = ["bun", "node (beta)", "electron (beta)"];
+const templates = ["bun", "cloudflare (beta)", "node (beta)", "electron (beta)"];
 const mirrors = [
 	"https://registry.npmmirror.com/",
 	"https://mirrors.cloud.tencent.com/npm/",
@@ -121,6 +121,8 @@ node_modules
 /packages/client/dist
 /packages/client/project
 /.astro
+/.wrangler
+/.vercel
 `,
 	);
 

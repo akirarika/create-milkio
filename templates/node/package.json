@@ -1,26 +1,27 @@
 {
-	"name": "node",
-	"private": true,
-	"version": "0.0.0",
-	"type": "module",
-	"scripts": {
-		"start": "node vite-node.mjs run-serve.ts",
-		"dev": "node vite-node.mjs run-serve.ts",
-		"api-test": "node vite-node.mjs run-api-test.ts",
-		"command": "node vite-node.mjs run-command.ts",
-		"build": "bun build ./run-serve.ts --splitting --sourcemap=inline --outdir=./dist --target=node --format=esm --minify",
-		"milkio": "node node_modules/milkio/c.ts"
-	},
-	"dependencies": {
-		"@hattip/adapter-node": "^0.0.45",
-		"milkio": "^0.5.1",
-		"milkio-template": "^0.0.2",
-		"typia": "^6.0.3"
-	},
-	"devDependencies": {
-		"@biomejs/biome": "1.8.0",
-		"@types/node": "latest",
-		"typescript": "^5.4.5",
-		"vite-node": "^1.6.0"
-	}
+  "name": "node",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node vite-node.mjs run-serve.ts",
+    "dev": "node vite-node.mjs run-serve.ts",
+    "api-test": "node vite-node.mjs run-api-test.ts",
+    "command": "node vite-node.mjs run-command.ts",
+    "build": "bun build ./run-serve.ts --splitting --sourcemap=inline --outdir=./dist --target=node --format=esm --minify",
+    "milkio": "node node_modules/milkio/c.ts"
+  },
+  "dependencies": {
+    "@hattip/adapter-node": "^0.0.45",
+    "client": "./packages/client",
+    "milkio": "^0.7.0-alpha.1",
+    "milkio-template": "^0.0.2",
+    "typia": "^6.0.3"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.8.0",
+    "@types/node": "latest",
+    "typescript": "^5.5.0",
+    "vite-node": "^1.6.0"
+  }
 }

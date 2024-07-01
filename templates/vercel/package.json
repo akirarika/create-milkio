@@ -1,0 +1,30 @@
+{
+	"name": "vercel",
+	"private": true,
+	"version": "0.0.0",
+	"type": "module",
+	"scripts": {
+		"start": "node vite-node.mjs run-serve.ts",
+		"dev": "node vite-node.mjs run-serve.ts",
+		"api-test": "node vite-node.mjs run-api-test.ts",
+		"command": "node vite-node.mjs run-command.ts",
+		"vercel": "vercel",
+		"deploy": "bun run vercel deploy",
+		"build": "bun build ./index.ts --splitting --sourcemap=inline --outdir=./api --target=node --format=esm --minify",
+		"milkio": "node node_modules/milkio/c.ts"
+	},
+	"dependencies": {
+		"@hattip/adapter-node": "^0.0.45",
+		"client": "./packages/client",
+		"milkio": "^0.7.0-alpha.1",
+		"milkio-template": "^0.0.2",
+		"typia": "^6.0.3"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.8.0",
+		"@types/node": "latest",
+		"typescript": "^5.5.0",
+		"vercel": "latest",
+		"vite-node": "^1.6.0"
+	}
+}

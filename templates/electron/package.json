@@ -27,7 +27,7 @@
 		"@electron/fuses": "^1.8.0",
 		"@types/node": "latest",
 		"electron": "30.0.9",
-		"typescript": "^5.4.5",
+		"typescript": "^5.5.0",
 		"vite-node": "^1.6.0"
 	},
 	"dependencies": {
@@ -36,7 +36,7 @@
 		"client": "file:packages/client",
 		"detect-port": "^1.6.1",
 		"electron-squirrel-startup": "^1.0.1",
-		"milkio": "0.5.2",
+		"milkio": "^0.7.0-alpha.1",
 		"milkio-static-for-node": "0.0.3",
 		"milkio-template": "^0.0.2",
 		"typia": "^6.0.3",

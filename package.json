@@ -2,7 +2,7 @@
 	"name": "create-milkio",
 	"module": "index.mjs",
 	"type": "module",
-	"version": "0.1.31",
+	"version": "0.1.35",
 	"devDependencies": {
 		"@biomejs/biome": "1.7.2",
 		"@types/bun": "latest"
@@ -15,7 +15,7 @@
 		"p": "npm publish --access public"
 	},
 	"peerDependencies": {
-		"typescript": "^5.0.0"
+		"typescript": "^5.5.0"
 	},
 	"dependencies": {
 		"enquirer": "^2.4.1"
