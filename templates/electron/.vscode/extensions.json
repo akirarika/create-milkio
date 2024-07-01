@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "biomejs.biome",
+    "akirarika.milkio",
+    "tamasfe.even-better-toml",
+    "astro-build.astro-vscode"
+  ]
+}

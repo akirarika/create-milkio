@@ -8,7 +8,7 @@ import { fileURLToPath } from "node:url";
 import { useInteractiveCli } from "./uses/interactive-cli.mjs";
 import { execFileSync } from "node:child_process";
 
-const templates = ["bun"];
+const templates = ["bun", "node (beta)", "electron (beta)"];
 const mirrors = [
 	"https://registry.npmmirror.com/",
 	"https://mirrors.cloud.tencent.com/npm/",
@@ -104,7 +104,7 @@ async function createMilkio() {
 		i = (i + 1) % frames.length;
 	}, 64);
 
-	await cp(join(__dirname, "templates", templateSelected), projectTargetPath, {
+	await cp(join(__dirname, "templates", templateSelected.split(" (").at(0)), projectTargetPath, {
 		recursive: true,
 	});
 
@@ -125,9 +125,12 @@ node_modules
 # generated files
 /app
 /dist
+/dist-static
+/out
 /generated
 /packages/client/dist
 /packages/client/project
+/.astro
 
 # misc
 .DS_Store

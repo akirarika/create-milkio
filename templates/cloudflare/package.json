@@ -1,0 +1,30 @@
+{
+	"name": "node",
+	"private": true,
+	"version": "0.0.0",
+	"type": "module",
+	"scripts": {
+		"start": "bun run ./run-serve.ts",
+		"dev": "bun run --inspect ./run-serve.ts",
+		"api-test": "bun run ./run-api-test.ts",
+		"command": "bun run ./run-command.ts",
+		"wrangler": "wrangler",
+		"build": "esbuild run-cloudflare.ts --bundle --outfile=dist/run-cloudflare.js --platform=node",
+		"deploy": "bun run build && bun run wrangler deploy",
+		"milkio": "node node_modules/milkio/c.ts"
+	},
+	"dependencies": {
+		"@hattip/adapter-node": "^0.0.45",
+		"milkio": "^0.5.1",
+		"milkio-template": "^0.0.2",
+		"typia": "^6.0.3"
+	},
+	"devDependencies": {
+		"esbuild": "0.21.5",
+		"wrangler": "^3.60.3",
+		"@biomejs/biome": "1.8.0",
+		"@types/node": "latest",
+		"typescript": "^5.4.5",
+		"vite-node": "^1.6.0"
+	}
+}

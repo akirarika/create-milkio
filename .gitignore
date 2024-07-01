@@ -1,6 +1,9 @@
 node_modules
 /templates/*/app
 /templates/*/dist
+/templates/*/dist-static
+/templates/*/.astro
+/templates/*/out
 /templates/*/generated
 /templates/*/packages/client/dist
 /templates/*/packages/client/project

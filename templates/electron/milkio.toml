@@ -1,0 +1,9 @@
+[menubar]
+commands = [{ name = 'Test All APIs', script = 'bun run api-test' }]
+
+[generate]
+significant = [
+  "rm -rf ./dist",
+  "bun build ./run-command.ts --splitting --sourcemap=inline --outdir=./dist --target=node --format=esm --minify",
+]
+insignificant = []
