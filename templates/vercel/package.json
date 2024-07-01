@@ -11,7 +11,7 @@
 		"vercel": "vercel",
 		"deploy": "bun run vercel deploy",
 		"build": "bun build ./index.ts --splitting --sourcemap=inline --outdir=./api --target=node --format=esm --minify",
-		"milkio": "node node_modules/milkio/c.ts"
+		"milkio": "bun run node_modules/milkio/c.ts"
 	},
 	"dependencies": {
 		"@hattip/adapter-node": "^0.0.45",

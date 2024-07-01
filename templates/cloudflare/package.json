@@ -11,7 +11,7 @@
 		"wrangler": "wrangler",
 		"build": "bun run wrangler deploy",
 		"deploy": "bun run wrangler deploy",
-		"milkio": "bun run node node_modules/milkio/c.ts"
+		"milkio": "bun run node_modules/milkio/c.ts"
 	},
 	"dependencies": {
 		"@hattip/adapter-node": "^0.0.45",

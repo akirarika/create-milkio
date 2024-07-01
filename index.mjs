@@ -3,7 +3,7 @@
 import { join, dirname } from "node:path";
 import { existsSync } from "node:fs";
 import { cp, readFile, writeFile, unlink } from "node:fs/promises";
-import { exit, cwd } from "node:process";
+import { exit, cwd, platform } from "node:process";
 import { fileURLToPath } from "node:url";
 import { useInteractiveCli } from "./uses/interactive-cli.mjs";
 import { execFileSync } from "node:child_process";
@@ -185,10 +185,17 @@ node_modules
 		stdio: "inherit",
 		cwd: projectTargetPath,
 	});
-	execFileSync("bun", ["run", "milkio", "gen"], {
-		stdio: "inherit",
-		cwd: projectTargetPath,
-	});
+	if (platform !== "win32") {
+		execFileSync("bun", ["run", "milkio", "gen"], {
+			stdio: "inherit",
+			cwd: projectTargetPath,
+		});
+	} else {
+		execFileSync("powershell.exe", ["-command", "bun run milkio gen"], {
+			stdio: "inherit",
+			cwd: projectTargetPath,
+		});
+	}
 
 	process.stdout.clearLine();
 	process.stdout.cursorTo(0);

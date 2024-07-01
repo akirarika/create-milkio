@@ -11,7 +11,7 @@
 		"build": "npm run milkio gen && astro build && electron-forge package",
 		"api-test": "node vite-node.mjs run-api-test.ts",
 		"command": "node vite-node.mjs run-command.ts",
-		"milkio": "node node_modules/milkio/c.ts",
+		"milkio": "bun run node_modules/milkio/c.ts",
 		"electron-forge": "electron-forge",
 		"astro": "astro"
 	},
