@@ -1,6 +1,0 @@
-[menubar]
-commands = [{ name = 'Test All APIs', script = 'bun run api-test' }]
-
-[generate]
-significant = []
-insignificant = []

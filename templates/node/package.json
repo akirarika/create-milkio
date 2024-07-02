@@ -12,9 +12,9 @@
 		"milkio": "bun run node_modules/milkio/c.ts"
 	},
 	"dependencies": {
-		"@hattip/adapter-node": "^0.0.45",
+		"@hattip/adapter-node": "^0.0.46",
 		"client": "./packages/client",
-		"milkio": "^0.7.0-alpha.1",
+		"milkio": "^0.7.0-alpha.2",
 		"milkio-template": "^0.0.2",
 		"typia": "^6.0.3"
 	},
