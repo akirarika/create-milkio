@@ -2,7 +2,7 @@
 	"name": "create-milkio",
 	"module": "index.mjs",
 	"type": "module",
-	"version": "0.1.43",
+	"version": "0.1.44",
 	"devDependencies": {
 		"@biomejs/biome": "1.7.2",
 		"@types/bun": "latest"
