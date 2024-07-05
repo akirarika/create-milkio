@@ -197,6 +197,7 @@ node_modules
 			cwd: projectTargetPath,
 		});
 	}
+	execFileSync("bun", ["i", "./packages/client"], { stdio: "inherit", cwd: projectTargetPath });
 
 	process.stdout.clearLine();
 	process.stdout.cursorTo(0);
