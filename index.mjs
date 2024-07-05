@@ -10,9 +10,8 @@ import { execFileSync } from "node:child_process";
 
 const templates = ["bun", "node", "cloudflare (beta)", "electron (beta)"];
 const mirrors = [
-	"https://registry.npmmirror.com/",
 	"https://mirrors.cloud.tencent.com/npm/",
-	"https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/",
+	"https://registry.npmmirror.com/",
 	"https://cdn.jsdelivr.net/npm/",
 ];
 // some package need latest version , remove from templates/*/bun/package.json and add in this array.
