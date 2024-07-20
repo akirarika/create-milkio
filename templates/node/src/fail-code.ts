@@ -6,7 +6,7 @@ export const failCode = {
 	NOT_FOUND: (data: undefined) => "Not Found",
 	NOT_ALLOW_METHOD: (data: undefined) => "Not Allow Method",
 	TYPE_SAFE_ERROR: (data: { path: string; expected: string; value: string }) => `Parameter Error: The current value is '${data.value}', which does not meet '${data.expected}' requirements`,
-	BUSINESS_FAIL: (data: undefined) => `${data}`,
+	BUSINESS_FAIL: (data: string) => `${data}`,
 	// You can add your own mistakes here
 	// ...
 } satisfies MilkioFailCode;
