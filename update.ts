@@ -17,4 +17,6 @@ for (const directory of directories) {
 	await $`bun i milkio-template`.cwd(path);
 	await $`bun i milkio-client`.cwd(join(path, "packages", "client"));
 	await $`bun i biome`.cwd(path);
+	await $`bun i`.cwd(path);
+	await $`bun i`.cwd(join(path, "packages", "client"));
 }
