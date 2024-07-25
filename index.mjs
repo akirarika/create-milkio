@@ -157,11 +157,24 @@ node_modules
 		/"name": ".*"/,
 		`"name": "${nameSelected}-client"`,
 	);
-
 	// clientPackageJson = clientPackageJson.replace(/"milkio": ".*"/, `"milkio": "^x.x.x"`);
 	await writeFile(
 		join(projectTargetPath, "packages", "client", "package.json"),
 		clientPackageJson,
+	);
+
+	// edit api-test.ts
+	let apiTestTs = await readFile(
+		join(projectTargetPath, "src", "api-test.ts"),
+		"utf8",
+	);
+	apiTestTs = apiTestTs.replace(
+		/ from ".*"/,
+		`"name": "${nameSelected}-client"`,
+	);
+	await writeFile(
+		join(projectTargetPath, "src", "api-test.ts"),
+		apiTestTs,
 	);
 
 	// edit bunfig.toml
@@ -234,7 +247,7 @@ node_modules
 			`2. Install "Milkio" in the VS Code extension.`,
 			`2. 在 VS Code 扩展中安装 "Milkio"。`,
 			`2. VS Code の拡張機能に "Milkio" をインストールします。`,
-			`2. VS Code 확장 프로그램에 'Milkio'를 설치합니다.`,
+			`2. VS Code 확장 프로그램에 'Milkio' 를 설치합니다.`,
 		),
 	);
 	// 3. Let's start turning your dreams into reality!
@@ -252,7 +265,15 @@ node_modules
 			"文档: https://zh-milkio.nito.ink",
 			"ドキュメント: https://milkio.fun",
 			"문서: https://milkio.fun",
-		)}\n`,
+		)}/runtime/${templateSelected.split(" (").at(0)}/\n`,
+	);
+	console.log(
+		i18n(
+			"  The document describes best practices for the development and deployment of this runtime",
+			"  文档中描述了开发和部署此运行时的最佳实践",
+			"  この文書では、このランタイムの開発と展開のためのベストプラクティスを説明しています",
+			"  이 문서는 이 런타임의 개발 및 배포를 위한 최선의 방법을 설명합니다",
+		),
 	);
 }
 
