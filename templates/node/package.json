@@ -15,7 +15,7 @@
 		"@hattip/adapter-node": "^0.0.46",
 		"biome": "^0.3.3",
 		"client": "./packages/client",
-		"milkio": "^0.7.0-alpha.9",
+		"milkio": "^0.7.0-alpha.10",
 		"milkio-template": "^0.0.2",
 		"typia": "^6.0.3",
 		"vite": "^5.3.3"
