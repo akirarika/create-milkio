@@ -30,7 +30,7 @@ export const test = defineApiTest(api, [
 	{
 		name: "Basic",
 		handler: async (test) => {
-			const result = await test.execute({
+			const result = await test.client.execute({
 				params: {
 					by: "milkio",
 				},
