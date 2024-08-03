@@ -170,7 +170,7 @@ node_modules
 	);
 	apiTestTs = apiTestTs.replace(
 		/ from ".*"/,
-		`"name": "${nameSelected}-client"`,
+		` from "${nameSelected}-client"`,
 	);
 	await writeFile(
 		join(projectTargetPath, "src", "api-test.ts"),
