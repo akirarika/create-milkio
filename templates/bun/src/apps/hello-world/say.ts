@@ -9,7 +9,7 @@ export const api = defineApi({
 	meta: {
 		//
 	},
-	action(
+	async action(
 		params: {
 			by: string & typia.tags.MinLength<2> & typia.tags.MaxLength<16>;
 		},
