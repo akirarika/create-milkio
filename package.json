@@ -1,24 +1,26 @@
 {
-	"name": "create-milkio",
-	"module": "index.mjs",
-	"type": "module",
-	"version": "0.1.51",
-	"devDependencies": {
-		"@biomejs/biome": "1.7.2",
-		"@types/bun": "latest"
-	},
-	"bin": {
-		"create-milkio": "index.mjs"
-	},
-	"scripts": {
-		"create-milkio": "node ./index.mjs",
-		"p": "npm publish --access public"
-	},
-	"peerDependencies": {
-		"typescript": "5.5.4"
-	},
-	"dependencies": {
-		"enquirer": "^2.4.1"
-	},
-	"trustedDependencies": ["create-milkio"]
+  "name": "create-milkio",
+  "module": "index.mjs",
+  "type": "module",
+  "version": "0.1.52",
+  "devDependencies": {
+    "@biomejs/biome": "1.7.2",
+    "@types/bun": "latest"
+  },
+  "bin": {
+    "create-milkio": "index.mjs"
+  },
+  "scripts": {
+    "create-milkio": "node ./index.mjs",
+    "p": "npm publish --access public"
+  },
+  "peerDependencies": {
+    "typescript": "5.5.4"
+  },
+  "dependencies": {
+    "enquirer": "^2.4.1"
+  },
+  "trustedDependencies": [
+    "create-milkio"
+  ]
 }
