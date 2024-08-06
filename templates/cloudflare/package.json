@@ -19,7 +19,7 @@
 		"client": "./packages/client",
 		"milkio": "^0.8.2",
 		"milkio-template": "^0.0.2",
-		"typia": "^6.0.3"
+		"typia": "^6.7.2"
 	},
 	"devDependencies": {
 		"esbuild": "0.21.5",
