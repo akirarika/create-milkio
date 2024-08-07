@@ -132,11 +132,7 @@ node_modules
 # misc
 .DS_Store
 *.pem
-**/*.zip
-**/*.tar.gz
-**/*.tgz
 **/*.log
-package-lock.json
 /.wrangler
 /.vercel
 /.env
