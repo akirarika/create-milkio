@@ -4,7 +4,7 @@ import { join } from "node:path";
 
 export const configMilkio = defineConfig(({ config }) => {
 	return config({
-		debug: false,
+		debug: true,
 
 		// http server
 		ignorePathLevel: 0,
