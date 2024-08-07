@@ -9,17 +9,19 @@
 		"api-test": "bun run ./run-api-test.ts",
 		"command": "bun run ./run-command.ts",
 		"build": "bun build ./run-serve.ts --sourcemap=external --outdir=./dist --target=bun --splitting --minify",
-		"milkio": "./node_modules/milkio/c.ts"
+		"milkio": "bun run ./node_modules/milkio/c.ts"
 	},
 	"trustedDependencies": [],
 	"dependencies": {
-		"milkio": "^0.5.1",
+		"biome": "^0.3.3",
+		"client": "./packages/client",
+		"milkio": "^0.8.2",
 		"milkio-template": "^0.0.2",
-		"typia": "^6.0.3"
+		"typia": "^6.7.2"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.8.0",
 		"@types/bun": "latest",
-		"typescript": "^5.4.5"
+		"typescript": "5.5.4"
 	}
 }

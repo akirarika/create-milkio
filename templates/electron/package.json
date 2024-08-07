@@ -11,7 +11,7 @@
 		"build": "npm run milkio gen && astro build && electron-forge package",
 		"api-test": "node vite-node.mjs run-api-test.ts",
 		"command": "node vite-node.mjs run-command.ts",
-		"milkio": "node node_modules/milkio/c.ts",
+		"milkio": "bun run ./node_modules/milkio/c.ts",
 		"electron-forge": "electron-forge",
 		"astro": "astro"
 	},
@@ -27,19 +27,21 @@
 		"@electron/fuses": "^1.8.0",
 		"@types/node": "latest",
 		"electron": "30.0.9",
-		"typescript": "^5.4.5",
+		"typescript": "5.5.4",
 		"vite-node": "^1.6.0"
 	},
 	"dependencies": {
 		"@hattip/adapter-node": "^0.0.45",
 		"astro": "^4.9.3",
+		"biome": "^0.3.3",
 		"client": "file:packages/client",
 		"detect-port": "^1.6.1",
 		"electron-squirrel-startup": "^1.0.1",
-		"milkio": "0.5.2",
+		"milkio": "^0.8.2",
 		"milkio-static-for-node": "0.0.3",
 		"milkio-template": "^0.0.2",
-		"typia": "^6.0.3",
-		"unplugin-auto-import": "^0.17.6"
+		"typia": "^6.7.2",
+		"unplugin-auto-import": "^0.17.6",
+		"vite": "^5.3.3"
 	}
 }

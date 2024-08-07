@@ -25,9 +25,9 @@ export const test = defineApiTest(api, [
   {
     name: "Basic",
     handler: async (test) => {
-      const result = await test.execute({ params: await test.randParams() })
-      test.logger.log("result", result)
-      if (!result.success) return test.reject(\`The result was not success\`)
+      const result = await test.client.execute({ params: await test.randParams() })
+      test.log("result", result)
+      if (!result.success) throw test.reject(\`The result was not success\`)
     }
   }
 ])

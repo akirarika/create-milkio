@@ -9,7 +9,7 @@ export const api = defineApi({
 	meta: {
 		//
 	},
-	action(
+	async action(
 		params: {
 			by: string & typia.tags.MinLength<2> & typia.tags.MaxLength<16>;
 		},
@@ -27,13 +27,13 @@ export const test = defineApiTest(api, [
 	{
 		name: "Basic",
 		handler: async (test) => {
-			const result = await test.execute({
+			const result = await test.client.execute({
 				params: {
 					by: "milkio",
 				},
 			});
 
-			if (!result.success) return test.reject("The result was not success");
+			if (!result.success) throw test.reject("The result was not success");
 		},
 	},
 ]);

@@ -3,16 +3,15 @@
 import { join, dirname } from "node:path";
 import { existsSync } from "node:fs";
 import { cp, readFile, writeFile, unlink } from "node:fs/promises";
-import { exit, cwd } from "node:process";
+import { exit, cwd, platform } from "node:process";
 import { fileURLToPath } from "node:url";
 import { useInteractiveCli } from "./uses/interactive-cli.mjs";
 import { execFileSync } from "node:child_process";
 
-const templates = ["bun", "node (beta)", "electron (beta)"];
+const templates = ["bun", "node", "cloudflare (beta)", "electron (beta)"];
 const mirrors = [
-	"https://registry.npmmirror.com/",
 	"https://mirrors.cloud.tencent.com/npm/",
-	"https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/",
+	"https://registry.npmmirror.com/",
 	"https://cdn.jsdelivr.net/npm/",
 ];
 // some package need latest version , remove from templates/*/bun/package.json and add in this array.
@@ -111,9 +110,7 @@ async function createMilkio() {
 	// create .gitignore
 	await writeFile(
 		join(projectTargetPath, ".gitignore"),
-		`# ignore
-
-# local env files
+		`# local env files
 .env.local
 .env.development.local
 .env.test.local
@@ -140,6 +137,9 @@ node_modules
 **/*.tgz
 **/*.log
 package-lock.json
+/.wrangler
+/.vercel
+/.env
 `,
 	);
 
@@ -174,11 +174,24 @@ node_modules
 		/"name": ".*"/,
 		`"name": "${nameSelected}-client"`,
 	);
-
 	// clientPackageJson = clientPackageJson.replace(/"milkio": ".*"/, `"milkio": "^x.x.x"`);
 	await writeFile(
 		join(projectTargetPath, "packages", "client", "package.json"),
 		clientPackageJson,
+	);
+
+	// edit api-test.ts
+	let apiTestTs = await readFile(
+		join(projectTargetPath, "src", "api-test.ts"),
+		"utf8",
+	);
+	apiTestTs = apiTestTs.replace(
+		/ from ".*"/,
+		` from "${nameSelected}-client"`,
+	);
+	await writeFile(
+		join(projectTargetPath, "src", "api-test.ts"),
+		apiTestTs,
 	);
 
 	// edit bunfig.toml
@@ -202,10 +215,18 @@ node_modules
 		stdio: "inherit",
 		cwd: projectTargetPath,
 	});
-	execFileSync("bun", ["run", "milkio", "gen"], {
-		stdio: "inherit",
-		cwd: projectTargetPath,
-	});
+	if (platform !== "win32") {
+		execFileSync("bun", ["run", "milkio", "gen"], {
+			stdio: "inherit",
+			cwd: projectTargetPath,
+		});
+	} else {
+		execFileSync("powershell.exe", ["-command", "bun run milkio gen"], {
+			stdio: "inherit",
+			cwd: projectTargetPath,
+		});
+	}
+	execFileSync("bun", ["i", "./packages/client"], { stdio: "inherit", cwd: projectTargetPath });
 
 	process.stdout.clearLine();
 	process.stdout.cursorTo(0);
@@ -243,7 +264,7 @@ node_modules
 			`2. Install "Milkio" in the VS Code extension.`,
 			`2. 在 VS Code 扩展中安装 "Milkio"。`,
 			`2. VS Code の拡張機能に "Milkio" をインストールします。`,
-			`2. VS Code 확장 프로그램에 'Milkio'를 설치합니다.`,
+			`2. VS Code 확장 프로그램에 'Milkio' 를 설치합니다.`,
 		),
 	);
 	// 3. Let's start turning your dreams into reality!
@@ -261,7 +282,15 @@ node_modules
 			"文档: https://zh-milkio.nito.ink",
 			"ドキュメント: https://milkio.fun",
 			"문서: https://milkio.fun",
-		)}\n`,
+		)}/runtime/${templateSelected.split(" (").at(0)}/\n`,
+	);
+	console.log(
+		i18n(
+			"  The document describes best practices for the development and deployment of this runtime",
+			"  文档中描述了开发和部署此运行时的最佳实践",
+			"  この文書では、このランタイムの開発と展開のためのベストプラクティスを説明しています",
+			"  이 문서는 이 런타임의 개발 및 배포를 위한 최선의 방법을 설명합니다",
+		),
 	);
 }
 

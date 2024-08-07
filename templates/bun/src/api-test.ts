@@ -1,4 +1,8 @@
+import { createClient } from "client";
+
 export default {
+	client: () =>
+		createClient({ baseUrl: "http://localhost:9000/", memoryStorage: true }),
 	async onBootstrap() {
 		// ..
 	},

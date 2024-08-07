@@ -8,3 +8,6 @@ node_modules
 /templates/*/packages/client/dist
 /templates/*/packages/client/project
 /milkio-project
+
+/templates/*/.wrangler
+/templates/*/.vercel
