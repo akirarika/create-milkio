@@ -1,10 +1,10 @@
-import { createTemplate } from "milkio-template";
 import { join } from "node:path";
+import { createTemplate } from "milkio-template";
 
 await createTemplate(async (tools) => {
-	return {
-		path: join(tools.directory(), `${tools.hyphen(tools.name())}.ts`),
-		content: `
+  return {
+    path: join(tools.directory(), `${tools.hyphen(tools.name())}.ts`),
+    content: `
 import { defineApi, defineApiTest } from "milkio"
 
 /**
@@ -32,5 +32,5 @@ export const test = defineApiTest(api, [
   }
 ])
 `.trim(),
-	};
+  };
 });
