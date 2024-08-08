@@ -1,13 +1,13 @@
 export * from "./types";
-import { failCode } from "../../src/fail-code";
+import { defineMiddleware, defineMilkioClient } from "milkio-client";
 import type ApiSchema from "../../generated/api-schema";
-import { defineMilkioClient, defineMiddleware } from "milkio-client";
+import { failCode } from "../../src/fail-code";
 
 export const createClient = defineMilkioClient<
-	typeof ApiSchema,
-	typeof failCode
+  typeof ApiSchema,
+  typeof failCode
 >([
-	//
+  //
 ]);
 
 export const FailCode = failCode;

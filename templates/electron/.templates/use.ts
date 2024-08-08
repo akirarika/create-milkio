@@ -1,10 +1,10 @@
-import { createTemplate } from "milkio-template";
 import { join } from "node:path";
+import { createTemplate } from "milkio-template";
 
 await createTemplate(async (tools) => {
-	return {
-		path: join(tools.directory(), `${tools.hyphen(tools.name())}.ts`),
-		content: `
+  return {
+    path: join(tools.directory(), `${tools.hyphen(tools.name())}.ts`),
+    content: `
 import { defineUse } from "milkio"
 
 export const use${tools.hump(tools.name())} = defineUse(() => {
@@ -17,5 +17,5 @@ export const use${tools.hump(tools.name())} = defineUse(() => {
   return ${tools.camel(tools.name())}
 })
 `.trim(),
-	};
+  };
 });
