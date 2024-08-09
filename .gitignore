@@ -11,3 +11,5 @@ node_modules
 
 /templates/*/.wrangler
 /templates/*/.vercel
+
+.DS_Store
