@@ -170,24 +170,9 @@ node_modules
 		/"name": ".*"/,
 		`"name": "${nameSelected}-client"`,
 	);
-	// clientPackageJson = clientPackageJson.replace(/"milkio": ".*"/, `"milkio": "^x.x.x"`);
 	await writeFile(
 		join(projectTargetPath, "packages", "client", "package.json"),
 		clientPackageJson,
-	);
-
-	// edit api-test.ts
-	let apiTestTs = await readFile(
-		join(projectTargetPath, "src", "api-test.ts"),
-		"utf8",
-	);
-	apiTestTs = apiTestTs.replace(
-		/ from ".*"/,
-		` from "${nameSelected}-client"`,
-	);
-	await writeFile(
-		join(projectTargetPath, "src", "api-test.ts"),
-		apiTestTs,
 	);
 
 	// edit bunfig.toml
