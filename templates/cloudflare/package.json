@@ -1,32 +1,32 @@
 {
-	"name": "cloudflare",
-	"private": true,
-	"version": "0.0.0",
-	"type": "module",
-	"scripts": {
-		"start": "bun run wrangler dev --port 9000",
-		"dev": "bun run wrangler dev --port 9000",
-		"api-test": "bun run ./run-api-test.ts",
-		"command": "bun run ./run-command.ts",
-		"wrangler": "wrangler",
-		"build": "bun run wrangler deploy",
-		"deploy": "bun run wrangler deploy",
-		"milkio": "bun run ./node_modules/milkio/c.ts"
-	},
-	"dependencies": {
-		"@hattip/adapter-node": "^0.0.45",
-		"biome": "^0.3.3",
-		"client": "./packages/client",
-		"milkio": "^0.8.2",
-		"milkio-template": "^0.0.2",
-		"typia": "^6.7.2"
-	},
-	"devDependencies": {
-		"esbuild": "0.21.5",
-		"wrangler": "^3.60.3",
-		"@biomejs/biome": "1.8.0",
-		"@types/node": "latest",
-		"typescript": "5.5.4",
-		"vite-node": "^1.6.0"
-	}
+  "name": "cloudflare",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "bun run wrangler dev --port 9000",
+    "dev": "bun run wrangler dev --port 9000",
+    "api-test": "bun run ./run-api-test.ts",
+    "command": "bun run ./run-command.ts",
+    "wrangler": "wrangler",
+    "build": "bun run wrangler deploy",
+    "deploy": "bun run wrangler deploy",
+    "milkio": "bun run ./node_modules/milkio/c.ts"
+  },
+  "dependencies": {
+    "@hattip/adapter-node": "^0.0.45",
+    "biome": "^0.3.3",
+    "client": "./packages/client",
+    "milkio": "^0.8.2",
+    "milkio-template": "^0.0.2",
+    "typia": "^6.7.2"
+  },
+  "devDependencies": {
+    "esbuild": "0.21.5",
+    "wrangler": "^3.60.3",
+    "@biomejs/biome": "1.8.0",
+    "@types/node": "latest",
+    "typescript": "5.5.4",
+    "vite-node": "^1.6.0"
+  }
 }

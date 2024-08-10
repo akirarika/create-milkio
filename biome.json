@@ -1,12 +1,20 @@
 {
-	"$schema": "https://biomejs.dev/schemas/1.7.2/schema.json",
-	"organizeImports": {
-		"enabled": true
-	},
-	"linter": {
-		"enabled": true,
-		"rules": {
-			"recommended": true
-		}
-	}
+  "$schema": "https://biomejs.dev/schemas/1.7.2/schema.json",
+  "organizeImports": {
+    "enabled": true
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true
+    }
+  },
+  "files": {
+    "ignore": [
+      "auto-imports.d.ts"
+    ]
+  },
+  "formatter": {
+    "indentStyle": "space"
+  }
 }

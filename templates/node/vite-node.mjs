@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-import { createServer } from "vite";
-import { ViteNodeServer } from "vite-node/server";
-import { ViteNodeRunner } from "vite-node/client";
-import { installSourcemapsSupport } from "vite-node/source-map";
 import { argv } from "node:process";
+import { createServer } from "vite";
+import { ViteNodeRunner } from "vite-node/client";
+import { ViteNodeServer } from "vite-node/server";
+import { installSourcemapsSupport } from "vite-node/source-map";
 
 // create vite server
 const server = await createServer({});

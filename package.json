@@ -4,7 +4,7 @@
   "type": "module",
   "version": "1.0.2",
   "devDependencies": {
-    "@biomejs/biome": "1.7.2",
+    "@biomejs/biome": "^1.8.3",
     "@types/bun": "latest"
   },
   "bin": {
@@ -12,6 +12,7 @@
   },
   "scripts": {
     "create-milkio": "node ./index.mjs",
+    "lint": "biome check --write .",
     "p": "npm publish --access public"
   },
   "peerDependencies": {
@@ -20,7 +21,5 @@
   "dependencies": {
     "enquirer": "^2.4.1"
   },
-  "trustedDependencies": [
-    "create-milkio"
-  ]
+  "trustedDependencies": ["create-milkio"]
 }
