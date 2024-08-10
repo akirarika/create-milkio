@@ -13,7 +13,6 @@
   },
   "trustedDependencies": [],
   "dependencies": {
-    "biome": "^0.3.3",
     "client": "./packages/client",
     "milkio": "^0.8.2",
     "milkio-template": "^0.0.2",

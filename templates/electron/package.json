@@ -33,7 +33,6 @@
   "dependencies": {
     "@hattip/adapter-node": "^0.0.45",
     "astro": "^4.9.3",
-    "biome": "^0.3.3",
     "client": "file:packages/client",
     "detect-port": "^1.6.1",
     "electron-squirrel-startup": "^1.0.1",
