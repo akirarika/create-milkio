@@ -2,7 +2,7 @@
   "name": "create-milkio",
   "module": "index.mjs",
   "type": "module",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "devDependencies": {
     "@biomejs/biome": "^1.8.3",
     "@types/bun": "latest"
@@ -21,5 +21,7 @@
   "dependencies": {
     "enquirer": "^2.4.1"
   },
-  "trustedDependencies": ["create-milkio"]
+  "trustedDependencies": [
+    "create-milkio"
+  ]
 }
