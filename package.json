@@ -2,7 +2,7 @@
   "name": "create-milkio",
   "module": "index.mjs",
   "type": "module",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "devDependencies": {
     "@biomejs/biome": "^1.8.3",
     "@types/bun": "latest"
@@ -12,6 +12,7 @@
   },
   "scripts": {
     "create-milkio": "node ./index.mjs",
+    "dev": "rm -rf ./milkio-project && node ./index.mjs",
     "lint": "biome check --write .",
     "p": "npm publish --access public"
   },

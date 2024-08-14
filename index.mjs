@@ -40,7 +40,7 @@ async function createMilkio() {
 				"🥛 どこにインストールしますか？完全なパスを入力してください",
 				"🥛 어디에 설치하시겠습니까? 전체 경로를 입력해주세요",
 			),
-			join(cwd(), ".."),
+			join(cwd()),
 		);
 		fullTargetPath = projectSelected;
 	}
