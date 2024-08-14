@@ -181,13 +181,9 @@ node_modules
 
 	// edit bunfig.toml
 	if (!mirrorSelected.startsWith("🤗")) {
-		const bunfigToml = await readFile(
-			join(projectTargetPath, "bunfig.toml"),
-			"utf8",
-		);
 		await writeFile(
 			join(projectTargetPath, "bunfig.toml"),
-			bunfigToml.replace(/registry = ".*"/, `registry = "${mirrorSelected}"`),
+			`[install]\nregistry = "${mirrorSelected}"`,
 		);
 	}
 
